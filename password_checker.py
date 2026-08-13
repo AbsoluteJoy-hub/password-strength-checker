@@ -1,5 +1,5 @@
 import re
-import secrets
+import random
 import string
 
 def check_strength(password):
@@ -45,7 +45,7 @@ def check_strength(password):
 
 def generate_password(length=16):
     chars = string.ascii_letters + string.digits + "!@#$%^&*"
-    return "".join(secrets.choice(chars) for _ in range(length))
+    return ''.join(random.choice(chars) for _ in range(length))
 
 
 print("=== Password Strength Checker ===")
@@ -61,14 +61,11 @@ while True:
     if choice == "1":
         pwd = input("Enter password: ")
         strength, tips = check_strength(pwd)
-
         print("\nStrength:", strength)
-
         if tips:
             print("Tips:")
-            for tip in tips:
-                print("-", tip)
-
+            for t in tips:
+                print("-", t)
         print()
 
     elif choice == "2":
